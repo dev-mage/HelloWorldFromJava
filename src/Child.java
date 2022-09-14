@@ -1,8 +1,14 @@
 public class Child extends Parent{
-    public Child() { System.out.println("Child"); }
-
-    public static void main(String[] args) {
-        Child c = new Child();
-        c.name = "김철수";
+    int age;
+    // 오버라이딩
+    void parentMethod() {
+        System.out.println("Parent Method Overriding");
     }
+    
+    // 오버로딩
+    void parentMethod(String name) { }
+    
+    void childMethod() { }
+    void childMethod(int age) { } // 오버로딩
+//    void childMethod(){ } -> 에러 'childMethod()' is already defined in 'Child'
 }

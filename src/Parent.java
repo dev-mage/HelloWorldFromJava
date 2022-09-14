@@ -1,7 +1,6 @@
 public class Parent {
     String name;
-
-    public Parent(){
-        System.out.println("Parent");
+    void parentMethod() {
+        System.out.println("Parent Method");
     }
 }
