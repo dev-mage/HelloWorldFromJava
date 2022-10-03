@@ -1,12 +1,4 @@
 public class Barista {
-    static int sales;
-    class Order {
-        int size; String state;
-        public Order(int size, String state) {
-            this.size = size;
-            this.state = state;
-        }
-    }
     class Coffee {
         int shot; int water; int ice;
         public Coffee(int shot, int water) {
@@ -23,36 +15,52 @@ public class Barista {
         static final int GRANDE = 450;
         static final int VENTI = 600;
     }
-
-    Coffee makeCoffee(Order order) {
+    Coffee makeCoffee(String state, int size) {
         Coffee coffee = null;
-        class CoffeeBeans{
-
+        class Disposables {
+            final int cup = 1;
+            final int lid = 1;
+            final int straw = 1;
+            void pack(Coffee coffee) {
+                int cup = this.cup;
+                int lid = this.lid;
+                int straw = this.straw;
+            }
         }
-        if(order.state.equals("Iced")) {
-            switch (order.size) {
+        if(state.equals("Iced")) {
+            switch (size) {
                 case CoffeeSize.GRANDE: coffee = new Coffee(3, 300, 90); break;
                 case CoffeeSize.VENTI: coffee = new Coffee(4, 400, 120); break;
                 default: coffee = new Coffee(2, 250, 60);
             }
         } else {
-            switch (order.size) {
+            switch (size) {
                 case CoffeeSize.GRANDE: coffee = new Coffee(3, 390); break;
                 case CoffeeSize.VENTI: coffee = new Coffee(4, 520); break;
                 default: coffee = new Coffee(2, 310);
             }
         }
+        Disposables disposables = new Disposables();
+        disposables.pack(coffee);
         return coffee;
     }
 
-    void help() {
-
-        class CafeInfo {
-            static final String LOCATION = "";
-            static final String BUSINESS_HOURS = "";
-            static final String PHONE_NUMBER = "";
-
+    void serve(Coffee coffee) {
+        String name = coffee.ice > 0 ? "아이스 커피" : "따뜻한 커피";
+        String size;
+        switch (coffee.shot) {
+            case 3: size = "그란데"; break;
+            case 4: size = "벤티"; break;
+            default: size = "톨";
         }
+        System.out.println("주문하신 " + size + " 사이즈 " + name + " 나왔습니다.");
+    }
+
+    public static void main(String[] args) {
+        Barista barista = new Barista();
+        barista.serve(barista.makeCoffee("Iced", CoffeeSize.TALL));
+        barista.serve(barista.makeCoffee("Hot", CoffeeSize.GRANDE));
+        barista.serve(barista.makeCoffee("Iced", CoffeeSize.VENTI));
     }
 
 }
