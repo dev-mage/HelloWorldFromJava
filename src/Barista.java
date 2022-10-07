@@ -1,15 +1,19 @@
 public class Barista {
+    /*
     class Coffee {
         int shot; int water; int ice;
+        public Coffee() {}
         public Coffee(int shot, int water) {
             this.shot = shot;
             this.water = water;
         }
+
         public Coffee(int shot, int water, int ice) {
             this(shot, water);
             this.ice = ice;
         }
     }
+
     static class CoffeeSize {
         static final int TALL = 350;
         static final int GRANDE = 450;
@@ -17,16 +21,6 @@ public class Barista {
     }
     Coffee makeCoffee(String state, int size) {
         Coffee coffee = null;
-        class Disposables {
-            final int cup = 1;
-            final int lid = 1;
-            final int straw = 1;
-            void pack(Coffee coffee) {
-                int cup = this.cup;
-                int lid = this.lid;
-                int straw = this.straw;
-            }
-        }
         if(state.equals("Iced")) {
             switch (size) {
                 case CoffeeSize.GRANDE: coffee = new Coffee(3, 300, 90); break;
@@ -40,12 +34,10 @@ public class Barista {
                 default: coffee = new Coffee(2, 310);
             }
         }
-        Disposables disposables = new Disposables();
-        disposables.pack(coffee);
         return coffee;
     }
 
-    void serve(Coffee coffee) {
+    Coffee serve(Coffee coffee) {
         String name = coffee.ice > 0 ? "아이스 커피" : "따뜻한 커피";
         String size;
         switch (coffee.shot) {
@@ -54,13 +46,13 @@ public class Barista {
             default: size = "톨";
         }
         System.out.println("주문하신 " + size + " 사이즈 " + name + " 나왔습니다.");
+        return coffee;
     }
-
     public static void main(String[] args) {
-        Barista barista = new Barista();
-        barista.serve(barista.makeCoffee("Iced", CoffeeSize.TALL));
-        barista.serve(barista.makeCoffee("Hot", CoffeeSize.GRANDE));
-        barista.serve(barista.makeCoffee("Iced", CoffeeSize.VENTI));
+        barista.serve(barista.makeCoffee("Iced", Barista.CoffeeSize.TALL));
+        barista.serve(barista.makeCoffee("Hot", Barista.CoffeeSize.GRANDE));
+        barista.serve(barista.makeCoffee("Iced", Barista.CoffeeSize.VENTI));
     }
+    */
 
 }
