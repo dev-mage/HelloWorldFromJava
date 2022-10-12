@@ -1,13 +1,19 @@
 public class ExceptionFlow {
-    public static void main(String[] args) throws Exception {
-        method1();
+    static void method() throws Exception {
+        try {
+            throw new CauseException("원인 예외 발생");
+        } catch (CauseException ce) {
+            ResultException re = new ResultException("예외 발생");
+            re.initCause(ce);
+            throw re;
+        }
     }
-
-    static void method1() throws Exception {
-        method2();
-    }
-
-    static void method2() throws Exception {
-        throw new Exception();
+    public static void main(String[] args) {
+        try {
+            method();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getCause().getMessage());
+        }
     }
 }
