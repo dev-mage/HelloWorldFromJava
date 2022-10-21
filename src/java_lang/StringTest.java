@@ -1,4 +1,4 @@
-package javalang;
+package java_lang;
 public class StringTest {
     public static void main(String[] args) {
         StringBuffer sb = new StringBuffer("abc");

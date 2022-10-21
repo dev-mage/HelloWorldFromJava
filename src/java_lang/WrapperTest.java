@@ -1,4 +1,4 @@
-package javalang;
+package java_lang;
 
 public class WrapperTest {
     public static void main(String[] args) {
