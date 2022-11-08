@@ -1,6 +1,7 @@
 package collection_framework;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SetTest {
     public static void main(String[] args) {
@@ -12,10 +13,9 @@ public class SetTest {
                 new Menu("tea", 3500),
                 new Menu("ade", 4500)
         };
-        TreeSet set = new TreeSet(Arrays.asList(menus));
-        for (Object o : set) {
-            System.out.print(o + " ");
-        }
+        int[] A = {1, 3, 6, 4, 1, 2};
+        TreeSet<Integer> set = Arrays.stream(A).filter(x -> x > 0).boxed().collect(Collectors.toCollection(TreeSet::new));
+
 
         // 실행 결과
         // <coffee: 3000> <tea: 3500> <ade: 4500>
